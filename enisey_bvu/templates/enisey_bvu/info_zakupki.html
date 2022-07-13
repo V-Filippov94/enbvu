@@ -1,0 +1,11 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    {% for iz in info_zakupki %}
+    <h2 style="text-align: center; margin-right: 40px;">{{ iz.title }}</h2>
+    <div class="text-info-zakup">{{ iz.text|safe }}</div>
+    {% endfor %}
+</main>
+{% endblock %}

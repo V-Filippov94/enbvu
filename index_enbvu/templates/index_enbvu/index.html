@@ -1,0 +1,56 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+        <div id="news">
+            {% for n in first_news %}
+            <div class="box" id="big_box">
+                <h2><a href="{% url 'news_page' %}">{{n.title|safe}}</a></h2>
+                <hr>
+                {% if image %}
+                {% include 'index_enbvu/carusel.html' %}
+                {% endif %}
+
+                <p>{{ n.description|safe }}</p>
+
+                {% if pdf %}
+                {% for p in pdf %}
+                <div class="save-file">
+                    <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="...">
+                    <a href="{{ p.pdf.url }}" target="_blank">Сохранить в PDF</a>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% if file %}
+                {% for f in file %}
+                <div class="save-file">
+                    <img src="{% static 'index_enbvu/folder_icon.jpg' %}" alt="...">
+                    <a href="{{ f.file.url }}" target="_blank">Подробнее</a>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <p class="date-first-news">{{ n.date_create }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="all-news-box" class="all-news">
+        {% for an in all_news %}
+        <div>
+            <a href="{% url 'news_page' %}">
+            <h3>{{an.title}}</h3>
+            <hr>
+            <p class="text">{{ an.description|truncatewords:30|safe }}</p>
+            <p class="date-first-news">{{ an.date_create }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+<script>
+    let all_news_box = document.getElementById('all-news-box')
+    all_news_box.children[0].style.display = 'none'
+</script>
+{% endblock %}
+

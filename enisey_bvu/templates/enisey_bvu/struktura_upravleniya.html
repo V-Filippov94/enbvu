@@ -1,0 +1,128 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main id="main">
+    <h2 style="text-align: center; margin-right: 30px;" >Структура Енисейского БВУ</h2>
+    <div class="box-content">
+        {% for f_o in first_org %}
+        <h4>{{ f_o }}</h4>
+
+        <p>Полное наименование: Енисейское бассейновое водное управление Федерального агентства водных ресурсов</p>
+        <p> Адрес: {{ f_o.address }}</p>
+
+        <p>Телефон:
+            {% for p in phone_org_first %}
+            {{ p }}
+            {% endfor %}
+        </p>
+
+        <p>Email: {{ f_o.email }}</p>
+        <p>Режим работы: {{ f_o.mode }}</p>
+
+        {% endfor %}
+    </div>
+    <div class="list-workers">
+        <input type="checkbox" class="indicator" id="indicator">
+        {% for b in boss %}
+        <label for="indicator" class="post-for-indicator">{{ b.post }}</label>
+        <div class="data-worker">
+            <ul class="head-uprav">
+                <li class="a">{{ b.name }}</li>
+
+                <li>
+                    {% for b_p in boss_phone %}
+                    Телефон: {{ b_p.number }}
+                    {% endfor %}
+                </li>
+                <li>Email: {{ b.email }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+        <div class="lev-two" id="lev_two">
+        {% for z in zam %}
+        <div>
+            <input type="checkbox" class="indicator" id="">
+            <label for="" class="post-for-indicator">{{ z.post }}</label>
+            <div class="data-worker">
+                <ul>
+                    <li>{{ z.name }}</li>
+                    {% for pz in workers_phone %}
+                    {% if z.id == pz.worker_id %}
+                    <li>Телефон: {{ pz.number }}</li>
+                    {% endif %}
+                    {% endfor %}
+
+                    <li>Email: {{ z.email }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+            <div class="sector-list" id="sector_list">
+            {% for sector in list_sector %}
+                 <div>
+                     <input type="checkbox" class="indicator" id="">
+                     <label for="" class="post-for-indicator">{{ sector }}</label>
+                     <div class="data-worker">
+                        <ul>
+                        {% for w in list_workers %}
+                            {% if w.sector_organization_id == sector.id %}
+                            <li>{{ w.post }}</li>
+                            <li>{{ w.name }}</li>
+
+                            {% for wp in workers_phone %}
+                            {% if w.id == wp.worker_id %}
+                            <li>{{ wp.number }}</li>
+                            {% endif %}
+                            {% endfor %}
+
+                            <li>Email: {{ w.email }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                 </div>
+            {% endfor %}
+            </div>
+            <div class="all-org" id="all_org">
+                {% for org in all_org %}
+                {% if org.name != 'Енисейское БВУ' %}
+                 <div>
+                     <input type="checkbox" class="indicator" id="">
+                     <label for="" class="post-for-indicator">{{ org }}</label>
+                     <div class="data-worker">
+                         <ul>
+                             {% for work in list_workers %}
+                             {% if work.organization_id == org.id %}
+                             <li>{{ work.post }}: {{ work.name }}</li>
+                             <li>Адрес: {{ org.address }}</li>
+
+                             {% if org.address_cor %}
+                             <li>Адрес для корреспонденции: {{ org.address_cor }}</li>
+                             {% endif %}
+                             <li>Телефон:
+                             {% for phonework in phone_org %}
+
+                                 {% if org.id == phonework.organization_id %}
+                                  {{ phonework.number }},
+                                 {% endif %}
+                             {% endfor %}
+                             </li>
+                             <li>Email: {{ org.email }}</li>
+
+                             {% if org.fax %}
+                             <li>Факс: {{ org.fax }}</li>
+                             {% endif %}
+                             {% endif %}
+                             {% endfor %}
+                         </ul>
+                     </div>
+                 </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+</main>
+<script src="{% static 'js/structura_upravleniya.js' %}"></script>
+
+{% endblock %}

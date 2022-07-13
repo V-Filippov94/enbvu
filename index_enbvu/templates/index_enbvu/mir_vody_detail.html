@@ -1,0 +1,28 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="mir-vody-year">
+        {% for i in mir_vody_list %}
+        <p><a href="{{ i.get_absolute_url }}">{{i.slug }}</a></p>
+        {% endfor %}
+    </div>
+    <div class="container-mir-vody" id="galery">
+        {% for i in image_mir_vody %}
+            {% if i.mir_vody_year_id == mir_vody.id %}
+                <div class="box-4-convert">
+                    <img src="{{ i.image.url }}" alt="" class="box-convert-img">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="mod_container" id="mod_container">
+        <div class="modal-img" id="modal_img">
+            <img src="" alt="Фото отсутствует">
+            <input type="button" value="X" class="btn-mod" id="btn_mod">
+        </div>
+    </div>
+</main>
+<script src="{% static 'js/mir_vody.js' %}" ></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2>Тексты официальных выступлений и заявлений руководителя и заместителей руководителя Енисейского БВУ</h2>
+    {% for of_v in oficial_vystupleniya %}
+    <div class="box-doc">
+        <h5>{{ of_v.title|safe }}</h5>
+        <iframe src="{{ of_v.file_pdf.url }}" frameborder="0" width="100%" height="600px" scrolling="yes"></iframe>
+        <div class="frame">
+            <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+            <a href="{{ of_v.file_pdf.url }}">Сохранить в PDF</a>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

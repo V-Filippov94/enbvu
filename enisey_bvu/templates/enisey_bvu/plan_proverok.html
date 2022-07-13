@@ -1,0 +1,20 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <h2>Информация о результатах проверок, проведенных Енисейским БВУ в пределах его полномочий, а также
+        о результатах проверок, проведенных в Енисейском БВУ</h2>
+    <div class="data-proverok">
+        <ol class="rect" id="rect">
+            {% for plan in plan_proverok %}
+            <li class="li-show">
+                <h5 style="margin-left: 20px">{{ plan.title }}</h5>
+                <p>{{ plan.text|safe }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</main>
+<script src="{% static 'js/function_bvu.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,45 @@
+.form-appeal{
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    margin-left: 10%;
+}
+.form-appeal p{
+    margin-top: 50px;
+}
+.name-user, .email-user, .address-user, .msg-user, .check-user, #id_file{
+    width: 100%;
+}
+
+#id_captcha_1{
+    width: 500px;
+}
+.captcha{
+    width: 80px;
+}
+
+.check-user{
+    position: relative;
+}
+
+.get_approval{
+    width:100%;
+    margin: 0;
+    bottom: 98px;
+    left: 30px;
+    position: relative;
+}
+.btn-ap{
+    width: 100%;
+    margin-bottom: 100px;
+    text-align: center;
+}
+.helptext{
+    font-size: 12px;
+    font-style: italic;
+}
+.text-center{
+    width: 700px;
+    margin-left: 10%;
+    margin-top: 50px;
+}

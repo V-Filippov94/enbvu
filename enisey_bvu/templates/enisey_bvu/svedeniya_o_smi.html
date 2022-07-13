@@ -1,0 +1,13 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2>Сведения о финансировании (отсутсвии финансирования) средств массовой информации</h2>
+    <div class="text-info-zakup">
+        {% for s in svedeniya_o_smi %}
+        <p>{{ s.text|safe }}</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

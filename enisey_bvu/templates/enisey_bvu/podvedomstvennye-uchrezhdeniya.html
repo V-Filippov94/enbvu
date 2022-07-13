@@ -1,0 +1,47 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <h2 style="text-align: center; margin-right: 40px; font-size: 24px;">Перечень федеральных государственных учреждений,
+        подведомственных Федеральному агентству водных ресурсов и
+        расположенных в зоне деятельности Енисейского БВУ, почтовые адреса, адреса электронной почты, номера
+        телефонов</h2>
+
+    {% for u in uchrezhdeniya %}
+    <div class="board-box">
+        <h5>{{u.name}}</h5>
+        <p style="margin-left: 40px;">{{ u.post }}: {{ u.worker_name }}</p>
+
+
+        {% for au in address %}
+        {% if au.uchrezhdenie_id == u.id %}
+
+        <ul>
+            <li >Адрес: {{ au }}</li>
+
+            <li class="phone-uch">Телефон:
+            {% for p in phones %}
+            {% if p.address_id == au.id %}
+            {{ p.phone }},
+            {% endif %}
+            {% endfor %}
+            </li>
+
+        </ul>
+
+        {% endif %}
+        {% endfor %}
+
+        {% if u.site %}
+        <p style="margin-left: 40px; margin-top:0;">Сайт: {{ u.site }}</p>
+        {% endif %}
+        <p style="margin-left: 40px; margin-top:0">Email: {{ u.email }}</p>
+    </div>
+
+    {% endfor %}
+
+</main>
+
+{% endblock %}
