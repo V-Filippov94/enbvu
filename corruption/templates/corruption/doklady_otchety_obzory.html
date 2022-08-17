@@ -1,0 +1,31 @@
+{% extends 'corruption/akty_anti_corruption.html' %}
+{% load static %}
+
+{% block prikaz %}
+<h2>Оценка работы по противодействию коррупции, проводимая в Енисейском БВУ</h2>
+<div class="base-box">
+    <form method="post">
+        {% csrf_token %}
+        <div style="margin-bottom: 20px" id="container-rating">
+            <div>
+                <input type="radio" name="update_type" value="high">
+                <label for="high">Высокий уровень</label>
+                <span style="opacity: 0">{{result_high}}</span>
+            </div>
+            <div>
+                <input type="radio" name="update_type" value="average">
+                <label for="average">Средний уровень</label>
+                <span style="opacity: 0">{{result_average}}</span>
+            </div>
+            <div>
+                <input type="radio" name="update_type" value="short">
+                <label for="short">Низкий уровень</label>
+                <span style="opacity: 0">{{result_short}}</span>
+            </div>
+        </div>
+        <input type="submit" name="add" value="Проголосовать" class="btn btn-primary" style="margin-right:10px;" id='golos'>
+        <input type="button" name="get_result" value="Результаты опроса" class="btn btn-primary" id="btn_result">
+    </form>
+</div>
+<script src="{% static 'js/rating.js' %}"></script>
+{% endblock %}

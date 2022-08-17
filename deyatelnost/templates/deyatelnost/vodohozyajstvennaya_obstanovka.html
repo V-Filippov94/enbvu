@@ -1,0 +1,57 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <h2 style="text-align: center; margin:5px 20px 40px 0;">Водохозяйственная обстановка</h2>
+
+    <div class="base-box">
+        <form action="{% url 'deyatelnost:date_search_vod_hoz' %}" method="get" class="form_vod_hoz">
+            <input type="date" name="Date" id="dateToday">
+            <button class="btn-vod-hoz">Показать</button>
+        </form>
+        <div class="list-point-vod-hoz">
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/sayan.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Саяно-Шушенское водохранилище</span> - {{ vod_hoz.sayno_sush|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/mainsk.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Майнское водохранилище</span> - {{ vod_hoz.maiynskoe|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/kras.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Красноярское водохранилище</span> - Красноярское водохранилище -
+                {{ vod_hoz.kras|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/irk.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Иркутское водохранилище</span> - {{ vod_hoz.irk|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/bratsk.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Братское водохранилище</span> - {{ vod_hoz.bratsk|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/ust_ilim.jpg' %}" alt="">
+                <p class="vod-hoz-res"><span>Усть-Илимское водохранилище</span> - {{ vod_hoz.ust_ilim|safe }}</p>
+            </div>
+
+            <div class="point-vod-hoz">
+                <img src="{% static 'index_enbvu/boguch.jpeg' %}" alt="">
+                <p class="vod-hoz-res"><span>Богучанское водохранилище</span> - {{ vod_hoz.boguch|safe }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="box-date">
+        <p>Размещено: {{ vod_hoz.date_created }}</p>
+        <p>Изменено: {{ vod_hoz.date_change }}</p>
+    </div>
+</main>
+{% endblock %}

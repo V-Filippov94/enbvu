@@ -1,0 +1,691 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content%}
+<main>
+    <h2>Результаты поиска</h2>
+
+    {% if object_list.0 %} <!-- Если в поиск попала новость -->
+    {% for obj in object_list.0 %}
+    <div class="search-block">
+        <h5>{{ obj }}</h5>
+        <hr>
+        <a href="{% url 'news_page' %}">Перейти на страницу "Новости"</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!--Енисейское БВУ-->
+    {% if object_list.1 %}
+    {% for obj in object_list.1 %}
+    <div class="search-block">
+        <h5>{{ obj|safe }}</h5>
+        <hr>
+        {% if obj.un_menu_enbv_id == 1 %}
+        <a href="{% url 'enisey_bvu:funkcii_i_polnomochiya' %}">Перейти на страницу "Функции и полномочия"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 2 %}
+        <a href="{% url 'enisey_bvu:normativnye_akty_function' %}">Перейти на страницу "Нормативные акты, определяющие
+            полномочия, задачи и функции"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 4 %}
+        <a href="{% url 'enisey_bvu:struktura_upravleniya' %}">Перейти на страницу "Структура управления"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 5 %}
+        <a href="{% url 'enisey_bvu:kontaktnye_dannye' %}">Перейти на страницу "Контактные данные"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 6 %}
+        <a href="{% url 'enisey_bvu:podvedomstvennye_uchrezhdeniya' %}">Перейти на страницу "Подведомственные
+            учреждения"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 7 %}
+        <a href="{% url 'enisey_bvu:perechni_informacionnyh_sistem' %}">Перейти на страницу "Перечни информационных
+            систем, банков данных, реестров, регистров"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 8 %}
+        <a href="{% url 'enisey_bvu:info_zakupki' %}">Перейти на страницу "Осуществление закупок для государственных
+            нужд"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 9 %}
+        <a href="{% url 'enisey_bvu:plan_proverok' %}">Перейти на страницу "План проверок, результаты проверок"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 10 %}
+        <a href="{% url 'enisey_bvu:oficialnye_vystupleniya' %}">Перейти на страницу "Официальные выступления и
+            заявления"</a>
+        {% endif %}
+        {% if obj.un_menu_enbv_id == 11 %}
+        <a href="{% url 'enisey_bvu:svedeniya_o_finansirovanii' %}">Перейти на страницу "Сведения о финансировании
+            (отсутсвии финансирования) средств массовой информации"</a>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.2 %}
+    {% for obj in object_list.2 %}
+    <div class="search-block">
+        <h5>{{ obj|safe }}</h5>
+        <hr>
+        {% for obj_all in object_list.3 %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 1 %}
+        <a href="{% url 'enisey_bvu:funkcii_i_polnomochiya' %}">Перейти на страницу "Функции и полномочия"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 2 %}
+        <a href="{% url 'enisey_bvu:normativnye_akty_function' %}">Перейти на страницу "Нормативные акты, определяющие
+            полномочия, задачи и функции"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 4 %}
+        <a href="{% url 'enisey_bvu:struktura_upravleniya' %}">Перейти на страницу "Структура управления"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 5 %}
+        <a href="{% url 'enisey_bvu:kontaktnye_dannye' %}">Перейти на страницу "Контактные данные"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 6 %}
+        <a href="{% url 'enisey_bvu:podvedomstvennye_uchrezhdeniya' %}">Перейти на страницу "Подведомственные
+            учреждения"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 7 %}
+        <a href="{% url 'enisey_bvu:perechni_informacionnyh_sistem' %}">Перейти на страницу "Перечни информационных
+            систем, банков данных, реестров, регистров"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 8 %}
+        <a href="{% url 'enisey_bvu:info_zakupki' %}">Перейти на страницу "Осуществление закупок для государственных
+            нужд"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 9 %}
+        <a href="{% url 'enisey_bvu:plan_proverok' %}">Перейти на страницу "План проверок, результаты проверок"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 10 %}
+        <a href="{% url 'enisey_bvu:oficialnye_vystupleniya' %}">Перейти на страницу "Официальные выступления и
+            заявления"</a>
+        {% endif %}
+        {% if obj.content_id == obj_all.id and obj_all.un_menu_enbv_id == 11 %}
+        <a href="{% url 'enisey_bvu:svedeniya_o_finansirovanii' %}">Перейти на страницу "Сведения о финансировании
+            (отсутсвии финансирования) средств массовой информации"</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!--Нормативные документы-->
+    {% if object_list.4 %}
+    {% for obj_na_f in object_list.4 %}
+    <div class="search-block">
+        <h5>{{ obj_na_f|safe }}</h5>
+        <hr>
+        {% if obj_na_f.un_menu_norm_akt_id == 7 %}
+        <a href="{% url 'normativ_document:norm_pravovye_akty' %}">Перейти на страницу "Нормативные правовые акты,
+            изданные
+            Росводресурсами"</a>
+        {% endif %}
+        {% if obj_na_f.un_menu_norm_akt_id == 8 %}
+        <a href="{% url 'normativ_document:admin_reg' %}">Перейти на страницу "Административные регламенты,
+            стандарты государственных услуг"</a>
+        {% endif %}
+        {% if obj_na_f.un_menu_norm_akt_id == 9 %}
+        <a href="{% url 'normativ_document:ustanov_formy' %}">Перейти на страницу "Установленные формы обращений,
+            заявлений и иных документов"</a>
+        {% endif %}
+        {% if obj_na_f.un_menu_norm_akt_id == 10 %}
+        <a href="{% url 'normativ_document:poryadok_obzhalovaniya' %}">Перейти на страницу "Порядок обжалования
+            нормативных правовых
+            актов и иных решений"</a>
+        {% endif %}
+        {% if obj_na_f.un_menu_norm_akt_id == 11 %}
+        <a href="{% url 'normativ_document:formy_gos_otchetnosti' %}">Перейти на страницу "Формы государственной
+            статистической отчетности №2-тп (водхоз), №2-ОС"</a>
+        {% endif %}
+        {% if obj_na_f.un_menu_norm_akt_id == 12 %}
+        <a href="{% url 'normativ_document:pravila_obrabotki' %}">Перейти на страницу "Формы государственной
+            статистической отчетности №2-тп (водхоз), №2-ОС"</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.5 %}
+    {% for list_file_norm_doc in object_list.5 %}
+    <div class="search-block">
+        <h5>{{ list_file_norm_doc|safe }}</h5>
+        <hr>
+        {% for all_content_norm_akt in object_list.6 %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 7 %}
+        <a href="{% url 'enisey_bvu:funkcii_i_polnomochiya' %}">Перейти на страницу "Нормативные правовые акты, изданные
+            Росводресурсами"</a>
+        {% endif %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 8 %}
+        <a href="{% url 'normativ_document:admin_reg' %}">Перейти на страницу "Административные регламенты,
+            стандарты государственных услуг"</a>
+        {% endif %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 9 %}
+        <a href="{% url 'normativ_document:ustanov_formy' %}">Перейти на страницу "Установленные формы обращений,
+            заявлений и иных документов"</a>
+        {% endif %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 10 %}
+        <a href="{% url 'normativ_document:poryadok_obzhalovaniya' %}">Перейти на страницу "Порядок обжалования
+            нормативных правовых
+            актов и иных решений"</a>
+        {% endif %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 11 %}
+        <a href="{% url 'normativ_document:formy_gos_otchetnosti' %}">Перейти на страницу "Формы государственной
+            статистической отчетности №2-тп (водхоз), №2-ОС"</a>
+        {% endif %}
+
+        {% if list_file_norm_doc.content_norm_akt_id == all_content_norm_akt.id and all_content_norm_akt.un_menu_norm_akt_id == 12 %}
+        <a href="{% url 'normativ_document:pravila_obrabotki' %}">Перейти на страницу "Формы государственной
+            статистической отчетности №2-тп (водхоз), №2-ОС"</a>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.7 %}
+    {% for obj_deyatel in object_list.7 %}
+    <div class="search-block">
+        <h5>{{ obj_deyatel|safe }}</h5>
+        <hr>
+        {% if obj_deyatel.un_menu_deyatelnost_id == 1 %}
+        <a href="{% url 'deyatelnost:uchastie_v_program' %}">Перейти на страницу "Участие в целевых и иных
+            программах"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 2 %}
+        <a href="{% url 'deyatelnost:mezhdunarodnoe_sotrudnichestvo' %}">Перейти на страницу "Международное
+            сотрудничество"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 3 %}
+        <a href="{% url 'deyatelnost:kongressy_vystavki' %}">Перейти на страницу "Конгрессы, конференции, семинары,
+            выставки"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 4 %}
+        <a href="{% url 'deyatelnost:sostoyanie_zashity' %}">Перейти на страницу "Состояние защиты населения
+            и территорий от чрезвычайных ситуаций"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 5 %}
+        <a href="{% url 'deyatelnost:statisticheskie_dannye' %}">Перейти на страницу "Статистические данные и
+            показатели"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 6 %}
+        <a href="{% url 'deyatelnost:ispolzovanie_sredstv' %}">Перейти на страницу "Использование выделяемых
+            бюджетных средств"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 7 %}
+        <a href="{% url 'deyatelnost:predostavlenie_vodnyh_obektov' %}">Перейти на страницу "Предоставление водных
+            объектов в пользование"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 8 %}
+        <a href="{% url 'deyatelnost:vodohozyajstvennye_meropriyatiya' %}">Перейти на страницу "Водохозяйственные
+            мероприятия"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 9 %}
+        <a href="{% url 'deyatelnost:monitoring_vodnyh_obektov' %}">Перейти на страницу "Мониторинг водных объектов"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 10 %}
+        <a href="{% url 'deyatelnost:bassejnovye_sovety' %}">Перейти на страницу "Бассейновые советы"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 11 %}
+        <a href="{% url 'deyatelnost:ustanovlenie_rezhimov' %}">Перейти на страницу "Установление режимов
+            водохранилищ"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 12 %}
+        <a href="{% url 'deyatelnost:skiovo_i_ndv' %}">Перейти на страницу "СКИОВО и НДВ"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 13 %}
+        <a href="{% url 'deyatelnost:kadrovoe_obespechenie' %}">Перейти на страницу "Кадровое обеспечение"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 14 %}
+        <a href="{% url 'deyatelnost:svedeniya_o_predostavlenii_lgot' %}"> Перейти на страницу "Сведения о
+            предоставлении льгот, отсрочек, рассрочках, о списании задолженности по платежам"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 15 %}
+        <a href="{% url 'deyatelnost:opredelenie_granic_zatopleniya' %}">Перейти на страницу "Определение границ зон
+            затопления, подтопления"</a>
+        {% endif %}
+
+        {% if obj_deyatel.un_menu_deyatelnost_id == 16 %}
+        <a href="{% url 'deyatelnost:likvidaciya_chs' %}">Перейти на страницу "Ликвидация ЧС в Иркутской области"</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.8 %}
+    {% for list_file_deyatel in object_list.8 %}
+     <div class="search-block">
+         <h5>{{ list_file_deyatel|safe }}</h5>
+         <hr>
+         {% for all_content_deyatel in object_list.9 %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 1 %}
+         <a href="{% url 'deyatelnost:uchastie_v_program' %}">Перейти на страницу "Участие в целевых и иных
+            программах"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 2 %}
+         <a href="{% url 'deyatelnost:sostoyanie_zashity' %}">Перейти на страницу "Состояние защиты населения
+            и территорий от чрезвычайных ситуаций"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 3 %}
+         <a href="{% url 'deyatelnost:kongressy_vystavki' %}">Перейти на страницу "Конгрессы, конференции, семинары,
+            выставки"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 4 %}
+         <a href="{% url 'deyatelnost:sostoyanie_zashity' %}">Перейти на страницу "Состояние защиты населения
+            и территорий от чрезвычайных ситуаций"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 5 %}
+         <a href="{% url 'deyatelnost:statisticheskie_dannye' %}">Перейти на страницу "Статистические данные и
+            показатели"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 6 %}
+         <a href="{% url 'deyatelnost:ispolzovanie_sredstv' %}">Перейти на страницу "Использование выделяемых
+            бюджетных средств"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 7 %}
+         <a href="{% url 'deyatelnost:predostavlenie_vodnyh_obektov' %}">Перейти на страницу "Предоставление водных
+            объектов в пользование"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 8 %}
+         <a href="{% url 'deyatelnost:vodohozyajstvennye_meropriyatiya' %}">Перейти на страницу "Водохозяйственные
+            мероприятия"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 9 %}
+          <a href="{% url 'deyatelnost:monitoring_vodnyh_obektov' %}">Перейти на страницу "Мониторинг водных
+              объектов"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 10 %}
+          <a href="{% url 'deyatelnost:bassejnovye_sovety' %}">Перейти на страницу "Бассейновые советы"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 11 %}
+          <a href="{% url 'deyatelnost:ustanovlenie_rezhimov' %}">Перейти на страницу "Установление режимов
+            водохранилищ"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 12 %}
+          <a href="{% url 'deyatelnost:skiovo_i_ndv' %}">Перейти на страницу "СКИОВО и НДВ"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 13 %}
+          <a href="{% url 'deyatelnost:kadrovoe_obespechenie' %}">Перейти на страницу "Кадровое обеспечение"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 14 %}
+         <a href="{% url 'deyatelnost:svedeniya_o_predostavlenii_lgot' %}"> Перейти на страницу "Сведения о
+            предоставлении льгот, отсрочек, рассрочках, о списании задолженности по платежам"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 15 %}
+         <a href="{% url 'deyatelnost:opredelenie_granic_zatopleniya' %}">Перейти на страницу "Определение границ зон
+            затопления, подтопления"</a>
+         {% endif %}
+
+         {% if list_file_deyatel.content_deyatelnost_id == all_content_deyatel.id and all_content_deyatel.un_menu_deyatelnost_id == 16 %}
+         <a href="{% url 'deyatelnost:likvidaciya_chs' %}">Перейти на страницу "Ликвидация ЧС в Иркутской области"</a>
+         {% endif %}
+
+
+         {% endfor %}
+     </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if object_list.10 %}
+    {% for obj_vod_hoz in object_list.10 %}
+    <div class="search-block">
+        <h5>{{ obj_vod_hoz|safe }}</h5>
+        <hr>
+         <a href="{% url 'deyatelnost:vodohozyajstvennaya_obstanovka' %}">Перейти на страницу "Водохозяйственная
+             обстановка"</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.11 %}
+    {% for obj_dist in object_list.11 %}
+    <div class="search-block">
+        <h5>{{ obj_dist|safe }}</h5>
+        <hr>
+         <a href="{% url 'deyatelnost:opredelenie_granic_zatopleniya' %}">Перейти на страницу "Определение границ зон
+             затопления, подтопления"</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.12 %}
+    {% for obj_zone in object_list.12 %}
+    <div class="search-block">
+        <h5>{{ obj_zone|safe }}</h5>
+        <hr>
+         <a href="{% url 'deyatelnost:opredelenie_granic_zatopleniya' %}">Перейти на страницу "Определение границ зон
+             затопления, подтопления"</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.13 %}
+    {% for obj_kadr in object_list.13 %}
+    <div class="search-block">
+        <h5>{{ obj_kadr|safe }}</h5>
+        <hr>
+        {% if obj_kadr.un_page_id == 1 %}
+        <a href="{% url 'kadr_provision:poryadok_postupleniya' %}">Перейти на страницу "Порядок поступления граждан на
+            государственную службу"</a>
+        {% endif %}
+
+        {% if obj_kadr.un_page_id == 2 %}
+        <a href="{% url 'kadr_provision:svedeniya_o_dolzhnostyah' %}">Перейти на страницу "Сведения о вакантных
+            должностях и требования к кандидатам на замещение  вакантных должностей"</a>
+        {% endif %}
+
+        {% if obj_kadr.un_page_id == 3 %}
+        <a href="{% url 'kadr_provision:result_konkurs' %}">Перейти на страницу "Результаты конкурсов на замещение
+            вакантных должностей"</a>
+        {% endif %}
+
+        {% if obj_kadr.un_page_id == 4 %}
+        <a href="{% url 'kadr_provision:kontakty_po_voprosu_zamesheniya' %}">Перейти на страницу "Контактные данные
+            по вопросу замещения вакантных должностей"</a>
+        {% endif %}
+
+        {% if obj_kadr.un_page_id == 5 %}
+        <a href="{% url 'kadr_provision:sostav-komissii' %}">Перейти на страницу "Состав комиссии по организации и
+            проведению конкурсов на замещение вакантных должностей"</a>
+        {% endif %}
+
+        {% if obj_kadr.un_page_id == 6 %}
+        <a href="{% url 'kadr_provision:obzhalovanie_result' %}">Перейти на страницу "Порядок обжалования результатов
+            конкурса"</a>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.14 %}
+    {% for list_file_kadr in object_list.14 %}
+    <div class="search-block">
+        <h5>{{ list_file_kadr|safe }}</h5>
+        <hr>
+        {% for all_content_kadr in object_list.15 %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 1 %}
+        <a href="{% url 'kadr_provision:poryadok_postupleniya' %}">Перейти на страницу "Порядок поступления граждан на
+            государственную службу"</a>
+        {% endif %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 2 %}
+        <a href="{% url 'kadr_provision:svedeniya_o_dolzhnostyah' %}">Перейти на страницу "Сведения о вакантных
+            должностях и требования к кандидатам на замещение  вакантных должностей"</a>
+        {% endif %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 3 %}
+        <a href="{% url 'kadr_provision:result_konkurs' %}">Перейти на страницу "Результаты конкурсов на замещение
+            вакантных должностей"</a>
+        {% endif %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 4 %}
+        <a href="{% url 'kadr_provision:kontakty_po_voprosu_zamesheniya' %}">Перейти на страницу "Контактные данные
+            по вопросу замещения вакантных должностей"</a>
+        {% endif %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 5 %}
+        <a href="{% url 'kadr_provision:sostav-komissii' %}">Перейти на страницу "Состав комиссии по организации и
+            проведению конкурсов на замещение вакантных должностей"</a>
+        {% endif %}
+
+        {% if list_file_kadr.kadr_provision_id == all_content_kadr.id and all_content_kadr.un_page_id == 5 %}
+        <a href="{% url 'kadr_provision:obzhalovanie_result' %}">Перейти на страницу "Порядок обжалования результатов
+            конкурса"</a>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.16 %}
+    {% for obj_gosuslugi in object_list.16 %}
+    <div class="search-block">
+        <h5>{{ obj_gosuslugi|safe }}</h5>
+        <hr>
+        {% if obj_gosuslugi.un_menu_okazanie_gosuslug_id == 1 %}
+         <a href="{% url 'okazanie_gosuslug:svedeniya_vod_reestra' %}">Перейти на страницу "Предоставление сведений из
+             государственного водного реестра и копий документов, содержащих сведения, включенные в государственный
+             водный реестр"</a>
+        {% endif %}
+
+        {% if obj_gosuslugi.un_menu_okazanie_gosuslug_id == 2 %}
+         <a href="{% url 'okazanie_gosuslug:polzovanie_vod_object' %}">Перейти на страницу "Предоставление водных
+             объектов в пользование на основании договора водопользования, в том числе заключенного по результатам
+             аукциона, по оформлению перехода прав и обязанностей по договорам водопользования"</a>
+        {% endif %}
+
+        {% if obj_gosuslugi.un_menu_okazanie_gosuslug_id == 3 %}
+         <a href="{% url 'okazanie_gosuslug:predostavlenie_v_polzovanie' %}">Перейти на страницу "Предоставление права
+             пользования водными объектами на основании решения о предоставлении водных объектов в пользование"</a>
+        {% endif %}
+
+        {% if obj_gosuslugi.un_menu_okazanie_gosuslug_id == 4 %}
+         <a href="{% url 'okazanie_gosuslug:utverzhdenie_sbrosov' %}">Перейти на страницу "Утверждение
+             нормативов допустимых сбросов веществ и микроорганизмов в водные объекты для водопользователей"</a>
+        {% endif %}
+
+        {% if obj_gosuslugi.un_menu_okazanie_gosuslug_id == 5 %}
+         <a href="{% url 'okazanie_gosuslug:razresheniya_zemelnogo_uchastka' %}">Перейти на страницу "Выдача разрешения
+             на создание искусственного земельного участка на водном объекте"</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.17 %}
+    {% for list_file_gosuslugi in object_list.17 %}
+     <div class="search-block">
+         <h5>{{ list_file_gosuslugi|safe }}</h5>
+         <hr>
+         {% for all_content_gosuslugi in object_list.18 %}
+
+         {% if list_file_gosuslugi.content_okazanie_gosuslug_id == all_content_gosuslugi.id and all_content_gosuslugi.un_menu_okazanie_gosuslug_id == 1 %}
+         <a href="{% url 'okazanie_gosuslug:svedeniya_vod_reestra' %}">Перейти на страницу "Предоставление сведений из
+             государственного водного реестра и копий документов, содержащих сведения, включенные в государственный
+             водный реестр"</a>
+         {% endif %}
+
+         {% if list_file_gosuslugi.content_okazanie_gosuslug_id == all_content_gosuslugi.id and all_content_gosuslugi.un_menu_okazanie_gosuslug_id == 2 %}
+         <a href="{% url 'okazanie_gosuslug:polzovanie_vod_object' %}">Перейти на страницу "Предоставление водных
+             объектов в пользование на основании договора водопользования, в том числе заключенного по результатам
+             аукциона, по оформлению перехода прав и обязанностей по договорам водопользования"</a>
+         {% endif %}
+
+         {% if list_file_gosuslugi.content_okazanie_gosuslug_id == all_content_gosuslugi.id and all_content_gosuslugi.un_menu_okazanie_gosuslug_id == 3 %}
+         <a href="{% url 'okazanie_gosuslug:predostavlenie_v_polzovanie' %}">Перейти на страницу "Предоставление права
+             пользования водными объектами на основании решения о предоставлении водных объектов в пользование"</a>
+        {% endif %}
+
+         {% if list_file_gosuslugi.content_okazanie_gosuslug_id == all_content_gosuslugi.id and all_content_gosuslugi.un_menu_okazanie_gosuslug_id == 4 %}
+         <a href="{% url 'okazanie_gosuslug:utverzhdenie_sbrosov' %}">Перейти на страницу "Утверждение
+             нормативов допустимых сбросов веществ и микроорганизмов в водные объекты для водопользователей"</a>
+         {% endif %}
+
+         {% if list_file_gosuslugi.content_okazanie_gosuslug_id == all_content_gosuslugi.id and all_content_gosuslugi.un_menu_okazanie_gosuslug_id == 5 %}
+         <a href="{% url 'okazanie_gosuslug:razresheniya_zemelnogo_uchastka' %}">Перейти на страницу "Выдача разрешения
+             на создание искусственного земельного участка на водном объекте"</a>
+         {% endif %}
+
+         {% endfor %}
+     </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.19 %}
+    {% for obj_appeal in object_list.19 %}
+    <div class="search-block">
+        <h5>{{ obj_appeal|safe }}</h5>
+        <hr>
+        {% if obj_appeal.un_menu_appeal_id == 1 %}
+        <a href="{% url 'appeal:informaciya_o_rabote_s_grazhdanami' %}">Перейти на страницу "Информация о работе с
+            обращениями граждан, организаций, общественных объединений, государственных органов, органов местного
+            самоуправления"</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.20 %}
+    {% for list_file_appeal in object_list.20 %}
+    <div class="search-block">
+        <h5>{{ list_file_appeal|safe }}</h5>
+        <hr>
+        {% for all_content_appeal in object_list.21 %}
+        {% if list_file_appeal.content_appeal_id == all_content_appeal.id and all_content_appeal.un_menu_appeal_id == 1 %}
+        <a href="{% url 'appeal:informaciya_o_rabote_s_grazhdanami' %}">Перейти на страницу "Информация о работе с
+            обращениями граждан, организаций, общественных объединений, государственных органов, органов местного
+            самоуправления"</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.22 %}
+    {% for obj_corrupt in object_list.22 %}
+    <div class="search-block">
+        <h5>{{ obj_corrupt|safe }}</h5>
+        <hr>
+        {% if obj_corrupt.un_menu_corruption_id == 1 %}
+         <a href="{% url 'corruption:akty_anti_corruption' %}">Перейти на страницу "Нормативные правовые и иные акты в
+             сфере противодействия коррупции"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 2 %}
+         <a href="{% url 'corruption:antikorrupcionnaya_ekspertiza' %}">Перейти на страницу "Антикоррупционная
+             экспертиза"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 3 %}
+         <a href="{% url 'corruption:metodicheskie_materialy' %}">Перейти на страницу "Методические материалы"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 4 %}
+         <a href="{% url 'corruption:doc_anti_cor' %}">Перейти на страницу "Формы документов, связанных с
+             противодействием коррупции, для заполнения"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 5 %}
+         <a href="{% url 'corruption:svedeniya_o_dohodah' %}">Перейти на страницу "Сведения о доходах, расходах, об
+             имуществе и обязательствах имущественного характера"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 6 %}
+         <a href="{% url 'corruption:komissiya' %}">Перейти на страницу "Комиссия по соблюдению требований к служебному
+             поведению и урегулированию конфликта интересов (аттестационная комиссия)"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 7 %}
+         <a href="{% url 'corruption:obratnaya_svyaz' %}">Перейти на страницу "Обратная связь для сообщений о фактах
+             коррупции"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 8 %}
+         <a href="{% url 'corruption:doklady_otchety_obzory' %}">Перейти на страницу "Доклады, отчеты, обзоры,
+             статистическая информация"</a>
+        {% endif %}
+
+        {% if obj_corrupt.un_menu_corruption_id == 9 %}
+         <a href="{% url 'corruption:chasto_zadavaemye_voprosy' %}">Перейти на страницу "Часто задаваемые вопросы"</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if object_list.23 %}
+    {% for list_file_corrupt in object_list.23 %}
+    <div class="search-block">
+        <h5>{{ list_file_corrupt|safe }}</h5>
+        <hr>
+        {% for all_content_corrupt in object_list.24 %}
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 1 %}
+        <a href="{% url 'corruption:akty_anti_corruption' %}">Перейти на страницу "Нормативные правовые и иные акты в
+             сфере противодействия коррупции"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 2 %}
+        <a href="{% url 'corruption:antikorrupcionnaya_ekspertiza' %}">Перейти на страницу "Антикоррупционная
+             экспертиза"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 3 %}
+        <a href="{% url 'corruption:metodicheskie_materialy' %}">Перейти на страницу "Методические материалы"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 4 %}
+        <a href="{% url 'corruption:doc_anti_cor' %}">Перейти на страницу "Формы документов, связанных с
+             противодействием коррупции, для заполнения"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 5 %}
+        <a href="{% url 'corruption:svedeniya_o_dohodah' %}">Перейти на страницу "Сведения о доходах, расходах, об
+             имуществе и обязательствах имущественного характера"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 6 %}
+        <a href="{% url 'corruption:komissiya' %}">Перейти на страницу "Комиссия по соблюдению требований к служебному
+             поведению и урегулированию конфликта интересов (аттестационная комиссия)"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 7 %}
+        <a href="{% url 'corruption:obratnaya_svyaz' %}">Перейти на страницу "Обратная связь для сообщений о фактах
+             коррупции"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 8 %}
+        <a href="{% url 'corruption:doklady_otchety_obzory' %}">Перейти на страницу "Доклады, отчеты, обзоры,
+             статистическая информация"</a>
+        {% endif %}
+
+        {% if list_file_corrupt.content_corruption_id == all_content_corrupt.id and all_content_corrupt.un_menu_corruption_id == 9 %}
+         <a href="{% url 'corruption:chasto_zadavaemye_voprosy' %}">Перейти на страницу "Часто задаваемые вопросы"</a>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+</main>
+<script src="{% static 'js/news_observe.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,184 @@
+/* Функции и полномочия */
+
+.data{
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+.data p {
+    text-indent: 15px;
+}
+
+h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.data ol {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.data .h_list_data {
+    margin-top: 50px;
+}
+
+.rect {
+    counter-reset: li;
+    list-style: none;
+    padding: 0;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.rect li {
+    position: relative;
+    padding: .4em .4em .4em .8em;
+    background: #fff;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;
+    margin: 15px 0;
+    opacity: 0;
+}
+
+.rect li:hover {
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+.rect li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #336699;
+    color: white;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rect li:after {
+    position: absolute;
+    content: "";
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+}
+
+.rect li:hover:after {
+    left: -.5em;
+    border-left-color: #336699;
+}
+
+
+li.el-show {
+    opacity: 1;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+
+
+/* Нормативные акты, функции */
+
+#rect_normativ {
+    width: 95%;
+}
+
+.point-normativ {
+    margin: 50px 0;
+    margin-right: 50px;
+    border-top: 0;
+    -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+}
+
+.point-normativ h5 {
+    padding: 20px;
+    font-weight: bold;
+    height: 40px auto;
+    background-color: #003366;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+.frame {
+    margin-left: 20px;
+    padding: 10px 0;
+}
+
+.frame a {
+    color: #336699;
+}
+
+.frame img {
+    width: 20px;
+}
+
+/* Структура БВУ */
+
+#rect_small li{
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Информация об осуществлении закупок товаров, работ, услуг для государственных нужд */
+
+.text-info-zakup{
+    margin-top: 50px;
+    padding: 20px;
+    background: #fff;
+    -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+}
+.text-info-zakup p{
+    text-indent: 25px;
+    margin: 0;
+    padding: 7px;
+}
+
+/* План проверок */
+.data-proverok{
+    margin-top: 50px;
+    margin-right: 40px;
+}
+
+/* Официальнные заявления и выступления */
+
+.box-doc{
+    width: 95%;
+    padding: 20px 0;
+    margin: 100px 0;
+    color: #fff;
+    background: linear-gradient(to bottom, #003366, #fff);
+    -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+    box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
+}
+.box-doc h5{
+    text-indent: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+.container-file{
+    display: flex;
+    flex-wrap: wrap;
+}

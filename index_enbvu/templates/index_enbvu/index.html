@@ -1,0 +1,80 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    {% if hot_news %}
+    <div id="news">
+    {% for hot in hot_news %}
+        <div class="box" id="hot_new">
+            <div class="block-title-hot">
+                <img src="{% static 'index_enbvu/hot-news.png' %}" alt="">
+                <h2><a href="{% url 'news_page' %}">{{hot.title|safe}}</a></h2>
+            </div>
+            <hr>
+            {% for i in hot_image %}
+            {% if i.news_id == hot.id %}
+             <section>
+                <div id="carouselExampleCaptions" class="carousel slide container" data-ride="carousel">
+                  <div class="carousel-inner">
+
+                    <div class="carousel-item {{i.css}}">
+                      <img src="{{ i.image.url }}" class="d-block w-100"  alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                      </div>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+            </section>
+            {% endif %}
+            {% endfor %}
+            <p>{{ hot.description|safe }}</p>
+            <p class="date-first-news">{{ hot.date_create }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div id="news">
+    {% for n in first_news %}
+        {% if n.hot != True %}
+        <div class="box" id="big_box">
+            <h2><a href="{% url 'news_page' %}">{{n.title|safe}}</a></h2>
+            <hr>
+            {% if image %}
+            {% include 'index_enbvu/carusel.html' %}
+            {% endif %}
+            <p>{{ n.description|safe }}</p>
+            <p class="date-first-news">{{ n.date_create }}</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+    <div id="all-news-box" class="all-news">
+        {% for an in all_news %}
+        <div>
+            <a href="{% url 'news_page' %}">
+            <h3>{{an.title}}</h3>
+            <hr>
+            <p class="text">{{ an.description|truncatewords:30|safe }}</p>
+            <p class="date-first-news">{{ an.date_create }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+<script>
+    let all_news_box = document.getElementById('all-news-box')
+    all_news_box.children[0].style.display = 'none'
+</script>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2>Обращение к руководителю Енисейского БВУ</h2>
+    <div class="base-box">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="text-center alert alert-{{ message.tags }}" id="msg">
+            {{ message|safe }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <form method="post" class="form-appeal" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <p class="get_approval">Даю своё согласие на обработку персональных данных в соответствии с
+                <a href="#"> Правилами обработки персональных данных в Енисейском БВУ</a></p>
+            <button class="btn-ap">Отправить</button>
+        </form>
+    </div>
+</main>
+<!--<main>-->
+<!--    <h2>Обращение к руководителю Енисейского БВУ</h2>-->
+<!--     {% if messages %}-->
+<!--     {% for message in messages %}-->
+<!--         <div class="text-center alert alert-{{ message.tags }}" id="msg">-->
+<!--             {{ message|safe }}-->
+<!--         </div>-->
+<!--     {% endfor %}-->
+<!--    {% endif %}-->
+<!--    <form method="post" class="form-appeal" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+<!--            {{ form.as_p }}-->
+<!--            <p class="get_approval">Даю своё согласие на обработку персональных данных в соответствии с-->
+<!--                <a href="#"> Правилами обработки персональных данных в Енисейском БВУ</a></p>-->
+<!--            <button class="btn-ap">Отправить</button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</main>-->
+{% endblock %}

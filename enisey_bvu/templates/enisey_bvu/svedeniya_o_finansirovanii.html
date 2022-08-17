@@ -1,0 +1,114 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+{% for obj in obj_model %}
+    {% if obj.mode_page_id == 1 %}
+    <div class="base-box" style="margin-top: 10px;">
+        <h2 style="text-align: center; margin:5px 20px 40px 0;">{{ obj.title|safe }}</h2>
+        <div id="box_cont">
+            {{ obj.content|safe }}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if obj.mode_page_id == 2 %}
+    <div class="data" id="data">
+        <h2 class="h_list_data">{{ obj.title|safe }}</h2>
+        <div class="rect">{{ obj.content|safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if obj.mode_page_id == 3 %}
+    <h2 style="margin-right: 50px;">{{ obj.title|safe }}</h2>
+        {% for l_f in list_files %}
+        {% for file in files %}
+
+        {% if file.list_file_id == l_f.id and file.content_id == obj.id %}
+    <div class="point-normativ">
+        <h5>{{ l_f.text|safe }}</h5>
+        <iframe src="{{ file.file.url }}" width="100%" height="600px" scrolling="yes"></iframe>
+        <div class="frame">
+            {% for picture in picture_file %}
+            {% if picture.name == 'Файл PDF' and file.picture_file_id == picture.id %}
+            <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+            <a href="{{ file.file.url }}">{{ file.name }}</a>
+            {% endif %}
+
+            {% if picture.name == 'Файл Word' and file.picture_file_id == picture.id %}
+            <img src="{% static 'index_enbvu/word.jpg' %}" alt="">
+            <a href="{{ file.file.url }}">{{ file.name }}</a>
+            {% endif %}
+
+            {% if picture.name == 'Файл Exel' and file.picture_file_id == picture.id %}
+            <img src="{% static 'index_enbvu/exel.png' %}" alt="">
+            <a href="{{ file.file.url }}">{{ file.name }}</a>
+            {% endif %}
+
+            {% if picture.name == 'Файл ZIP' and file.picture_file_id == picture.id %}
+            <img src="{% static 'index_enbvu/zip.png' %}" alt="">
+            <a href="{{ file.file.url }}">{{ file.name }}</a>
+            {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+        {% endif %}
+
+        {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% if obj.mode_page_id == 4 %}
+        <h2 style="margin-right: 50px;">{{ obj.title|safe }}</h2>
+        {% for l_f in list_files %}
+        {% if l_f.content_id == obj.id %}
+            <div class="base-box">
+                {{ l_f.text|safe }}
+                <div class="class container-file">
+                {% for file in files %}
+                {% if l_f.id == file.list_file_id and file.content_id == obj.id %}
+                <div class="frame">
+                    {% for picture in picture_file %}
+                    {% if picture.name == 'Файл PDF' and file.picture_file_id == picture.id %}
+                    <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+                    <a href="{{ file.file.url }}" target="_blank">{{ file.name }}</a>
+                    {% endif %}
+
+                    {% if picture.name == 'Файл Word' and file.picture_file_id == picture.id %}
+                    <img src="{% static 'index_enbvu/word.jpg' %}" alt="">
+                    <a href="{{ file.file.url }}" target="_blank">{{ file.name }}</a>
+                    {% endif %}
+
+                    {% if picture.name == 'Файл Exel' and file.picture_file_id == picture.id %}
+                    <img src="{% static 'index_enbvu/exel.png' %}" alt="">
+                    <a href="{{ file.file.url }}" target="_blank">{{ file.name }}</a>
+                    {% endif %}
+
+                    {% if picture.name == 'Файл ZIP' and file.picture_file_id == picture.id %}
+                    <img src="{% static 'index_enbvu/zip.png' %}" alt="">
+                    <a href="{{ file.file.url }}" target="_blank">{{ file.name }}</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+{% endfor %}
+    <div class="box-date">
+        <p>Размещено: {{ date_created.date_created }}</p>
+        <p>Изменено: {{ date_change.date_change__max}}</p>
+    </div>
+</main>
+<script src="{% static 'js/norm_doc.js' %}"></script>
+
+{% endblock %}

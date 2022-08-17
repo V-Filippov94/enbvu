@@ -1,0 +1,20 @@
+{% extends 'corruption/akty_anti_corruption.html' %}
+{% load static %}
+
+{% block prikaz %}
+<h2>Форма для сообщения в Енисейское БВУ:</h2>
+{% if messages %}
+     {% for message in messages %}
+         <div class="text-center alert alert-{{ message.tags }}" id="msg">
+             {{ message|safe }}
+         </div>
+     {% endfor %}
+    {% endif %}
+<form method="post" name="anti_cor" enctype="multipart/form-data" class="form-appeal" >
+    {% csrf_token %}
+    <div class="base-box">
+        {{ form.as_p }}
+        <button class="btn-ap">Отправить</button>
+    </div>
+</form>
+{% endblock %}

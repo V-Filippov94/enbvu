@@ -1,0 +1,153 @@
+{% extends 'deyatelnost/uchastie_v_program.html' %}
+{% load static %}
+
+{% block prikaz %}
+<h2>Приказы об определении границы зоны затопления</h2>
+<ul class="list-region" id="list_region">
+{% for reg in region %}
+    <li>
+        {{ reg }}
+    </li>
+{% endfor %}
+</ul>
+
+<ul class="list-district" id="list_district_kras">
+    {% for d in district %}
+    {% for r in region %}
+    {% if d.region == r and r.name == 'Красноярский край' %}
+    <li class="point-district">
+        <div class="base-box" id="block_district">
+            {{ d }}
+            <ul class="sublist-text-file">
+            {% for text_file in list_file %}
+            {% if text_file.prikaz_o_zone_podtop_id == d.id %}
+                <li>
+                    {{ text_file.text|safe }}
+                    <div class="frame">
+                        {% for file_p in files_podtop %}
+                        {% if file_p.list_file_id == text_file.id %}
+                        <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+                        <a href="{{ file_p.file.url }}" target="_blank">Сохранить в PDF</a>
+                        {% endif %}
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+<ul class="list-district" id="list_district_hakas">
+    {% for d in district %}
+    {% for r in region %}
+    {% if d.region == r and r.name == 'Республика Хакасия' %}
+    <li class="point-district">
+        <div class="base-box">
+            {{ d }}
+             <ul class="sublist-text-file">
+            {% for text_file in list_file %}
+            {% if text_file.prikaz_o_zone_podtop_id == d.id %}
+                <li>
+                    {{ text_file.text|safe }}
+                    <div class="frame">
+                        {% for file_p in files_podtop %}
+                        {% if file_p.list_file_id == text_file.id %}
+                        <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+                        <a href="{{ file_p.file.url }}" target="_blank">Сохранить в PDF</a>
+                        {% endif %}
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+<ul class="list-district" id="list_district_tuva">
+    {% for d in district %}
+    {% for r in region %}
+    {% if d.region == r and r.name == 'Республика Тыва' %}
+    <li class="point-district">
+        <div class="base-box">
+            {{ d }}
+             <ul class="sublist-text-file">
+            {% for text_file in list_file %}
+            {% if text_file.prikaz_o_zone_podtop_id == d.id %}
+                <li>
+                    {{ text_file.text|safe }}
+                    <div class="frame">
+                        {% for file_p in files_podtop %}
+                        {% if file_p.list_file_id == text_file.id %}
+                        <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+                        <a href="{{ file_p.file.url }}" target="_blank">Сохранить в PDF</a>
+                        {% endif %}
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+<ul class="list-district" id="list_district_irk">
+    {% for d in district %}
+    {% for r in region %}
+    {% if d.region == r and r.name == 'Иркутская Область' %}
+    <li class="point-district">
+        <div class="base-box">
+            {{ d }}
+              <ul class="sublist-text-file">
+            {% for text_file in list_file %}
+            {% if text_file.prikaz_o_zone_podtop_id == d.id %}
+                <li>
+                    {{ text_file.text|safe }}
+                    <div class="frame">
+                        {% for file_p in files_podtop %}
+                        {% if file_p.list_file_id == text_file.id %}
+                        <img src="{% static 'index_enbvu/pdf_pick.png' %}" alt="">
+                        <a href="{{ file_p.file.url }}" target="_blank">Сохранить в PDF</a>
+                        {% endif %}
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+<ul class="list-district" id="list_district_bur">
+    {% for d in district %}
+    {% for r in region %}
+    {% if d.region == r and r.name == 'Республика Бурятия' %}
+    <li class="point-district">
+        <div class="base-box">
+            {{ d }}
+        </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+
+<script src="{% static 'js/granici_zatopleniya.js' %}"></script>
+{% endblock %}

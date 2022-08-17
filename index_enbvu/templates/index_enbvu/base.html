@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'index_enbvu/shortcut.ico'  %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/style.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/enisey_bvu.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/appeal.css'  %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>{{ title }}</title>
+</head>
+<body id="body">
+{% block menu %}
+<header>
+    <div class="logo">
+        <a href="{% url 'base_page' %}"><img src="{% static 'index_enbvu/logo.png' %}" alt="Енисейское БВУ"></a>
+        <div class="weather">
+            <p>Красноярск: {{info_weather.temp}}<sup>o</sup></p>
+            <img src="http://openweathermap.org/img/w/{{info_weather.icon}}.png" alt="">
+        </div>
+    </div>
+</header>
+<div class="tide-hr">
+    <hr class="tide">
+    <hr class="tide">
+</div>
+
+<div class="content" id="content">
+
+    <nav>
+
+        <div class="cm-e-menu">
+            <ul id="list_menu">
+                {% for point in menu %}
+                {% if point.title == 'Главная' %}
+                <li class="topmenu" id="tophead"><a href="{% url 'base_page' %}">{{point.title}}</a></li>
+                {% elif point.title == 'Новости' %}
+                <li class="topmenu" id="topnews"><a href="{% url 'news_page' %}">{{point.title}}</a></li>
+                {% else %}
+                <li class="topmenu">
+                    {% if point.title == 'Ликвидация ЧС в Иркутской области' %}
+                    <a href="{% url 'deyatelnost:likvidaciya_chs' %}">{{ point.title }}</a>
+                    {% elif point.title == 'Карта сайта' %}
+                    <a href="{% url 'map' %}">{{ point.title }}</a>
+                    {% else %}
+                    {{point.title}}
+                    <ul class="submenu" id="submenu">
+                        {% for u_m in un_menu %}
+                        {% if point.id == u_m.cat_id %}
+                            <li><a href="/{{point.url}}/{{ u_m.url }}">{{u_m}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <form action="{% url 'search_results_view' %}" method="get" class="form-search">
+            <button><img src="{% static 'index_enbvu/search.png' %}" alt="" width="50px"></button>
+            <input type="text" name="q" placeholder="Поиск..." maxlength="60">
+        </form>
+
+        <div class="font-page">
+            <p>Размер шрифта</p>
+            <hr style="margin: 0">
+            <input type="button" value="P" id="small_size" class="small-size">
+            <input type="button" value="P" id="average_size" class="average-size">
+            <input type="button" value="P" id="high_size" class="high-size">
+        </div>
+
+        <div class="font-page">
+            <p>Цвет сайта</p>
+            <hr style="margin: 0">
+            <input type="button" value="Ц" id="white_color" class="white-color">
+            <input type="button" value="Ц" id="black_color" class="black-color">
+            <input type="button" value="Ц" id="blue_color" class="blue-color">
+            <input type="button" value="Ц" id="brown_color" class="brown-color">
+        </div>
+
+        <div class="board">
+            {% for photo in photo_link %}
+            {% if 'http' in photo.url %}
+            <a href="{{ photo.url }}" target="_blank"><img src="{{ photo.photo.url }}" alt="..."></a>
+            {% else %}
+            <a href="/{{ photo.url }}/"><img src="{{ photo.photo.url }}" alt="..."></a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <hr class="tide-link">
+        <hr class="tide">
+    </nav>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer id="footer">
+    <div>
+        <p>Енисейское бассейновое водное управление Федерального агентства водных ресурсов</p>
+        <p>Адрес: 660041, город Красноярск, проспект Свободный, дом 72, кабинет 401</p>
+        <p>Телефон: +7-(391)-244-45-41, e-mail: info@enbvu.ru</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/font-size.js' %}"></script>
+<script src="{% static 'js/color-page.js' %}"></script>
+<script src="{% static 'js/opredelenie_ie.js' %}"></script>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <h2 style="text-align: center;">Фотогалерея воинской славы "Бессмертный полк"</h2>
+    <div class="galery" id="galery">
+        {% for v in veterans %}
+            <div class="veteran-img">
+                <div class="veteran-img-l"></div>
+                <div class="veteran-img-r"></div>
+                <div class="veteran-img-b"></div>
+                <div class="veteran-img-t"></div>
+                <img src="{{ v.photo.url }}" alt="Фото отсутствует">
+            </div>
+        {% endfor %}
+    <div class="mod_container" id="mod_container">
+        <div class="modal-img" id="modal_img">
+            <img src="" alt="Фото отсутствует">
+            <input type="button" value="X" class="btn-mod" id="btn_mod">
+        </div>
+    </div>
+    </div>
+</main>
+<script src="{% static 'js/polk.js' %}" ></script>
+{% endblock %}

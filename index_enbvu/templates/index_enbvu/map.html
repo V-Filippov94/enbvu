@@ -1,0 +1,216 @@
+{% extends 'index_enbvu/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <h2>Карта сайта</h2>
+    <div class="base-box">
+        <ul class="box-list-menu">
+        {% for point in list_menu %}
+            {% if point.title == 'Главная' %}
+            <li>
+                <a href="{% url 'base_page' %}">{{ point }}</a>
+            </li>
+
+            {% elif point.title == 'Новости' %}
+            <li>
+                <a href="{% url 'news_page' %}">{{ point }}</a>
+            </li>
+
+            {% elif point.title == 'Карта сайта' %}
+            <li>
+                <a href="{% url 'map' %}">{{ point }}</a>
+            </li>
+
+            {% elif point.title == 'Ликвидация ЧС в Иркутской области' %}
+            <li>
+                <a href="{% url 'deyatelnost:likvidaciya_chs' %}">{{ point }}</a>
+            </li>
+
+            {% else %}
+            <li>
+                {{point}}
+                 <ul class="box-sub-menu">
+                    {% for p_un_menu in list_un_menu %}
+                    {% if p_un_menu.cat_id == point.id %}
+
+                     {% if p_un_menu.title == 'Функции и полномочия Енисейского БВУ' %}
+                     <li><a href="{% url 'enisey_bvu:funkcii_i_polnomochiya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Нормативные акты, определяющие полномочия, задачи и функции' %}
+                     <li><a href="{% url 'enisey_bvu:normativnye_akty_function' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Структура управления' %}
+                     <li><a href="{% url 'enisey_bvu:struktura_upravleniya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Контактные данные' %}
+                     <li><a href="{% url 'enisey_bvu:kontaktnye_dannye' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Подведомственные учреждения' %}
+                     <li><a href="{% url 'enisey_bvu:podvedomstvennye_uchrezhdeniya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Перечни информационных систем, банков данных, реестров, регистров' %}
+                     <li><a href="{% url 'enisey_bvu:perechni_informacionnyh_sistem' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Осуществление закупок для государственных нужд' %}
+                     <li><a href="{% url 'enisey_bvu:info_zakupki' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'План проверок, результаты проверок' %}
+                     <li><a href="{% url 'enisey_bvu:plan_proverok' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Официальные выступления и заявления' %}
+                     <li><a href="{% url 'enisey_bvu:oficialnye_vystupleniya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Сведения о финансировании (отсутсвии финансирования) средств массовой информации' %}
+                     <li><a href="{% url 'enisey_bvu:svedeniya_o_finansirovanii' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Нормативные правовые акты, изданные Росводресурсами' %}
+                     <li><a href="{% url 'normativ_document:norm_pravovye_akty' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Административные регламенты, стандарты государственных услуг' %}
+                     <li><a href="{% url 'normativ_document:admin_reg' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Установленные формы обращений, заявлений и иных документов' %}
+                     <li><a href="{% url 'normativ_document:ustanov_formy' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Порядок обжалования нормативных правовых актов и иных решений' %}
+                     <li><a href="{% url 'normativ_document:poryadok_obzhalovaniya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Правила обработки персональных данных в Енисейском БВУ (документ, определяющий политику Енисейского БВУ в отношении обработки персональных данных)' %}
+                     <li><a href="{% url 'normativ_document:formy_gos_otchetnosti' %}">{{ p_un_menu }}</a></li>
+
+                    {% elif p_un_menu.title == 'Участие в целевых и иных программах' %}
+                     <li><a href="{% url 'deyatelnost:uchastie_v_program' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Международное сотрудничество' %}
+                     <li><a href="{% url 'deyatelnost:mezhdunarodnoe_sotrudnichestvo' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Конгрессы, конференции, семинары, выставки' %}
+                     <li><a href="{% url 'deyatelnost:kongressy_vystavki' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Состояние защиты населения и территорий от чрезвычайных ситуаций' %}
+                     <li><a href="{% url 'deyatelnost:sostoyanie_zashity' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Статистические данные и показатели' %}
+                     <li><a href="{% url 'deyatelnost:statisticheskie_dannye' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Использование выделяемых бюджетных средств' %}
+                     <li><a href="{% url 'deyatelnost:ispolzovanie_sredstv' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Водохозяйственная обстановка' %}
+                     <li><a href="{% url 'deyatelnost:vodohozyajstvennaya_obstanovka' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Предоставление водных объектов в пользование' %}
+                     <li><a href="{% url 'deyatelnost:predostavlenie_vodnyh_obektov' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Водохозяйственные мероприятия' %}
+                     <li><a href="{% url 'deyatelnost:vodohozyajstvennye_meropriyatiya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Мониторинг водных объектов' %}
+                     <li><a href="{% url 'deyatelnost:monitoring_vodnyh_obektov' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Бассейновые советы' %}
+                     <li><a href="{% url 'deyatelnost:bassejnovye_sovety' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Установление режимов водохранилищ' %}
+                     <li><a href="{% url 'deyatelnost:ustanovlenie_rezhimov' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'СКИОВО и НДВ' %}
+                     <li><a href="{% url 'deyatelnost:skiovo_i_ndv' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Кадровое обеспечение' %}
+                     <li>
+                         <a href="{% url 'deyatelnost:kadrovoe_obespechenie' %}">{{ p_un_menu }}</a>
+                         <ul class="sub-menu-kadr">
+                             {% for k in list_kadr %}
+                             {% if k.name == 'Порядок поступления граждан на государственную службу' %}
+                             <li><a href="{% url 'kadr_provision:poryadok_postupleniya' %}">{{k}}</a></li>
+
+                             {% elif k.name == 'Сведения о вакантных должностях и квалификационные требования к кандидатам на замещение вакантных должностей' %}
+                             <li><a href="{% url 'kadr_provision:svedeniya_o_dolzhnostyah' %}">{{k}}</a></li>
+
+                             {% elif k.name == 'Результаты конкурсов на замещение вакантных должностей' %}
+                             <li><a href="{% url 'kadr_provision:result_konkurs' %}">{{k}}</a></li>
+
+                             {% elif k.name == 'Контактные данные по вопросу замещения вакантных должностей' %}
+                             <li><a href="{% url 'kadr_provision:kontakty_po_voprosu_zamesheniya' %}">{{k}}</a></li>
+
+                             {% elif k.name == 'Состав комиссии по организации и проведению конкурсов на замещение вакантных должностей' %}
+                             <li><a href="{% url 'kadr_provision:sostav-komissii' %}">{{k}}</a></li>
+
+                             {% elif k.name == 'Порядок обжалования результатов конкурса' %}
+                             <li><a href="{% url 'kadr_provision:obzhalovanie_result' %}">{{k}}</a></li>
+
+                             {% endif %}
+                             {% endfor %}
+                         </ul>
+                     </li>
+
+                     {% elif p_un_menu.title == 'Сведения о предоставлении льгот, отсрочек, рассрочках, о списании задолженности по платежам' %}
+                     <li><a href="{% url 'deyatelnost:svedeniya_o_predostavlenii_lgot' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Определение границ зон затопления, подтопления' %}
+                     <li><a href="{% url 'deyatelnost:opredelenie_granic_zatopleniya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Предоставление сведений из государственного водного реестра и копий документов, содержащих сведения, включенные в государственный водный реестр' %}
+                     <li><a href="{% url 'okazanie_gosuslug:svedeniya_vod_reestra' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Предоставление водных объектов в пользование на основании договора водопользования, в том числе заключенного по результатам аукциона, по оформлению перехода прав и обязанностей по договорам водопользования' %}
+                     <li><a href="{% url 'okazanie_gosuslug:polzovanie_vod_object' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Предоставление права пользования водными объектами на основании решения о предоставлении водных объектов в пользование' %}
+                     <li><a href="{% url 'okazanie_gosuslug:predostavlenie_v_polzovanie' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Утверждение нормативов допустимых сбросов веществ и микроорганизмов в водные объекты для водопользователей' %}
+                     <li><a href="{% url 'okazanie_gosuslug:utverzhdenie_sbrosov' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Выдача разрешения на создание искусственного земельного участка на водном объекте' %}
+                     <li><a href="{% url 'okazanie_gosuslug:razresheniya_zemelnogo_uchastka' %}">{{ p_un_menu }}</a></li>
+
+                    {% elif p_un_menu.title == 'Обращение к руководителю' %}
+                     <li><a href="{% url 'appeal:appeal_head' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Информация о работе с обращениями граждан, организаций, общественных объединений, государственных органов, органов местного самоуправления' %}
+                     <li><a href="{% url 'appeal:informaciya_o_rabote_s_grazhdanami' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Нормативные правовые и иные акты в сфере противодействия коррупции' %}
+                     <li><a href="{% url 'corruption:akty_anti_corruption' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Антикоррупционная экспертиза' %}
+                     <li><a href="{% url 'corruption:antikorrupcionnaya_ekspertiza' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Методические материалы' %}
+                     <li><a href="{% url 'corruption:metodicheskie_materialy' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Формы документов, связанных с противодействием коррупции, для заполнения' %}
+                     <li><a href="{% url 'corruption:doc_anti_cor' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Сведения о доходах, расходах, об имуществе и обязательствах имущественного характера' %}
+                     <li><a href="{% url 'corruption:svedeniya_o_dohodah' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Комиссия по соблюдению требований к служебному поведению и урегулированию конфликта интересов (аттестационная комиссия)' %}
+                     <li><a href="{% url 'corruption:komissiya' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Обратная связь для сообщений о фактах коррупции' %}
+                     <li><a href="{% url 'corruption:obratnaya_svyaz' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Доклады, отчеты, обзоры, статистическая информация' %}
+                     <li><a href="{% url 'corruption:doklady_otchety_obzory' %}">{{ p_un_menu }}</a></li>
+
+                     {% elif p_un_menu.title == 'Часто задаваемые вопросы' %}
+                     <li><a href="{% url 'corruption:chasto_zadavaemye_voprosy' %}">{{ p_un_menu }}</a></li>
+
+                     {% endif %}
+
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</main>
+
+{% endblock %}
