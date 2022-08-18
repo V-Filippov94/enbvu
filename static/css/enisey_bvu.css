@@ -1,17 +1,24 @@
 /* Функции и полномочия */
 
+.data{
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
 .data p {
     text-indent: 15px;
 }
 
-.data h2 {
+h2 {
     text-align: center;
-    color: #003399;
+    color: #003366;
     margin-bottom: 20px;
 }
 
 .data ol {
     margin-top: 20px;
+    list-style-type: none;
 }
 
 .data .h_list_data {
@@ -29,15 +36,17 @@
 .rect li {
     position: relative;
     padding: .4em .4em .4em .8em;
-    margin: .5em 0 .5em 2.5em;
-    background: white;
+    background: #fff;
     color: #444;
     text-decoration: none;
     transition: all .3s ease-out;
+    margin: 15px 0;
+    opacity: 0;
 }
 
 .rect li:hover {
     background: whitesmoke;
+    cursor: pointer;
 }
 
 .rect li:before {
@@ -71,17 +80,15 @@
     border-left-color: #336699;
 }
 
-.li-show {
-    opacity: 0;
-}
 
-.li-show.el-show {
+li.el-show {
     opacity: 1;
     -moz-transition: opacity 1s;
     -webkit-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
 }
+
 
 
 /* Нормативные акты, функции */
@@ -91,8 +98,8 @@
 }
 
 .point-normativ {
-    margin: 20px;
-    margin-top: 100px;
+    margin: 50px 0;
+    margin-right: 50px;
     border-top: 0;
     -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
     -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
@@ -113,7 +120,6 @@
 .frame {
     margin-left: 20px;
     padding: 10px 0;
-
 }
 
 .frame a {
@@ -124,118 +130,11 @@
     width: 20px;
 }
 
-
 /* Структура БВУ */
 
-.box-content {
-    margin-top: 50px;
-}
-
-.box-content p {
-    margin: 0;
-    padding: 0;
-}
-
-.list-workers {
-    margin-top: 50px;
-    background: #fff;
-    border: 1px solid whitesmoke;
-    min-width: 800px;
-    width: 86%;
-    padding: 25px;
-    -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-    -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-    box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-}
-
-.indicator {
-    display: none;
-}
-
-.post-for-indicator {
-    cursor: pointer;
-    user-select: none;
-    position: relative;
+#rect_small li{
+    margin: 10px;
     padding: 10px;
-    min-width: 800px;
-    left: 50px;
-}
-
-.data-worker {
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.4s;
-}
-
-.data-worker ul {
-    list-style: none;
-    margin-left: 10px;
-}
-
-.indicator:checked~.data-worker {
-    max-height: 1300px;
-}
-
-.post-for-indicator:before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: -30px;
-    border: 11px solid #39739d;
-    border-bottom-color: transparent;
-    /*Треугольничик - кнопка*/
-    border-right-color: transparent;
-    border-left-color: transparent;
-}
-
-.indicator:checked~.post-for-indicator:before {
-    transform: rotate(180deg) translate(6px);
-    top: 5px;
-    left: -24px;
-}
-
-.lev-two {
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.lev-two li {
-    border-bottom: 1px solid brown;
-    font-style: italic;
-}
-
-.sector-list {
-    margin-left: 40px;
-}
-
-.head-uprav li {
-    font-style: italic;
-    border-bottom: 1px solid brown;
-}
-
-
-/* Подведомственные учреждения */
-
-.board-box {
-    margin: 30px;
-    padding: 30px;
-    margin-top: 50px;
-    background-color: #fff;
-    -webkit-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-    -moz-box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-    box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
-}
-
-.board-box p {
-    margin-top: 30px;
-}
-
-.phone-uch {
-    display: inline-block;
-}
-
-.board-box ul {
-    list-style-type: none;
 }
 
 /* Информация об осуществлении закупок товаров, работ, услуг для государственных нужд */
@@ -273,8 +172,13 @@
     box-shadow: 0px 2px 9px 4px rgba(34, 60, 80, 0.31);
 }
 .box-doc h5{
+    text-indent: 25px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     font-weight: bold;
+}
+.container-file{
+    display: flex;
+    flex-wrap: wrap;
 }

@@ -1,8 +1,8 @@
 .form-appeal{
     display: flex;
     flex-wrap: wrap;
-    width: 700px;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 5%;
 }
 .form-appeal p{
     margin-top: 50px;
@@ -12,7 +12,7 @@
 }
 
 #id_captcha_1{
-    width: 500px;
+    min-width: 720px;
 }
 .captcha{
     width: 80px;
@@ -32,8 +32,12 @@
 .btn-ap{
     width: 100%;
     margin-bottom: 100px;
+    margin-top: 50px;
     text-align: center;
+    border: 2px solid #004680;
+
 }
+
 .helptext{
     font-size: 12px;
     font-style: italic;
